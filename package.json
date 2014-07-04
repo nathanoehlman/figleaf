@@ -1,0 +1,22 @@
+{
+  "name": "figleaf",
+  "version": "0.1.0",
+  "description": "FigLeaf is an extremely lightweight config loader that allows searching of multiple paths for configurations",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "json"
+  ],
+  "author": "Nathan Oehlman",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1"
+  }
+}
