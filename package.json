@@ -1,6 +1,6 @@
 {
   "name": "figleaf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/nathanoehlman/figleaf",
   "description": "FigLeaf is an extremely lightweight config loader that allows searching of multiple paths for configurations",
   "main": "index.js",
