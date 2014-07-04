@@ -1,6 +1,7 @@
 {
   "name": "figleaf",
   "version": "0.1.0",
+  "homepage": "https://github.com/nathanoehlman/figleaf",
   "description": "FigLeaf is an extremely lightweight config loader that allows searching of multiple paths for configurations",
   "main": "index.js",
   "scripts": {
@@ -18,5 +19,9 @@
   },
   "devDependencies": {
     "chai": "^1.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanoehlman/figleaf.git"
   }
 }
