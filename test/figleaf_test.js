@@ -1,39 +1,27 @@
-var should = require('chai').should(),
-	figleaf = require('..'),
-	defaultPath = __dirname + '/config/pathed';
-    
-describe('FigLeaf', function(){
-    
-    it('should be able to get configuration data from supplied path', function(done) {
+const { expect } = require('chai');
+const figleaf = require('..');
+const defaultPath = __dirname + '/config/pathed';
 
-    	var config = figleaf({ paths: [ defaultPath ], refresh: true });
-    	config.type.should.equal('pathed');
+describe('FigLeaf', function () {
+  it('should be able to get configuration data from supplied path', function () {
+    const config1 = figleaf({paths: [defaultPath], refresh: true});
+    expect(config1.type).equal('pathed');
 
-    	// Should be able to get cached config
-    	config = figleaf();
-    	config.type.should.equal('pathed');
+    // Should be able to get cached config
+    const config2 = figleaf();
+    expect(config2).equal(config1);
+  });
 
-        return done();    	
+  it('should be able to get configuration data from a path supplied in an environment variable before paths', function () {
+    process.env.FIGLEAF_CONFIG = __dirname + '/config/environment';
+    let config = figleaf({env: 'FIGLEAF_CONFIG', paths: [__dirname + '/config/pathed'], refresh: true});
+    expect(config.type).equal('environment');
+  });
 
-    });
-
-    it('should be able to get configuration data from a path supplied in an environment variable before paths', function(done) {
-
-    	process.env.FIGLEAF_CONFIG = __dirname + '/config/environment';
-
-    	var config = figleaf({ env: 'FIGLEAF_CONFIG', paths: [__dirname + '/config/pathed'], refresh: true });
-    	config.type.should.equal('environment');
-
-        return done();
-    });
-
-    it('should be able to get configuration data specific to a NODE_ENV variable', function(done) {
-
-    	process.env.NODE_ENV = 'test';
-    	var config = figleaf({paths: [__dirname + '/config/pathed'], refresh: true });
-    	config.type.should.equal('pathed');
-    	config.variable.should.equal('This is a test');
-        return done();
-    });
-    
+  it('should be able to get configuration data specific to a NODE_ENV variable', function () {
+    process.env.NODE_ENV = 'test';
+    const config = figleaf({paths: [__dirname + '/config/pathed'], refresh: true});
+    expect(config.type).equal('pathed');
+    expect(config.variable).equal('This is a test');
+  });
 });
